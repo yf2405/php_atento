@@ -4,73 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<script src="index.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>formulary</title>
+    <title>Formulario</title>
+    <!-- Agregamos los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
-	<?php if(isset($_SESSION['message'])){?>
-		<?= $_SESSION['message']?>
-	<?php session_unset();}?>
 	
-<h1>Formulary of user</h1>
-	<form action="insert.php" method="POST" id = "query_js">
-		<label for="name">Name:</label>
-		<input type="text" name="name" required><br>
+    <?php if(isset($_SESSION['message'])){?>
+        <div class="alert alert-info" id = "myalert"><?= $_SESSION['message']?></div>
+        <?php session_unset();}?>
+    
+    <div class="container">
+        <h1>Formulario de usuario</h1>
+        <form action="insert.php" method="POST" id="query_js">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
 
-		<label for="email">Email:</label>
-		<input type="email" name="email" required><br>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
 
-		<label for="password">Password:</label>
-		<input type="password" name="password" required><br>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
 
-		<label for="birthDay">birth Day:</label>
-		<input type="date" name="birthDay" required><br>
+            <div class="form-group">
+                <label for="birthDay">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" name="birthDay" required>
+            </div>
 
-		<label for="city">City:</label>
-		<input type="text" name="city" required><br>
+            <div class="form-group">
+                <label for="city">Ciudad:</label>
+                <input type="text" class="form-control" name="city" required>
+            </div>
 
-		<input type = "submit" name="save" value="save" ></input>
-	</form>
-	<br>
-	<h2>List of user</h2>
-	 <table id= "myTable">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Password</th>
-				<th>Birthday</th>
-				<th>City</th>
-				<th>Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
-			$query = "SELECT * FROM formulary";
-			$result_formulary = mysqli_query($connection, $query);
-			while ($row = mysqli_fetch_array($result_formulary)) {?>
-              <tr>
-			 
-				<td><?php echo $row['name']?></td>
-				<td><?php echo $row['email']?></td>
-				<td><?php echo $row['password']?></td>
-				<td><?php echo $row['birthday']?></td>
-				<td><?php echo $row['city']?></td>
-				<td>
-				<a href="edit.php?id=<?php echo $row['id']?>"> 
-				   edit
-				</a>
-				<a href="delete.php?id=<?php echo $row['id']?>"> 
-				  Delete
-				</a>
-			</td>
-			  </tr>
-		<?php 	}?>
-
-			
-		</tbody>
-  </table>
+            <input type="submit" name="save" value="Guardar" class="btn btn-primary">
+        </form>
+        <br>
+        <h2>Lista de usuarios</h2>
+        <table class="table" id="myTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Contraseña</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Ciudad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $query = "SELECT * FROM formulary";
+                $result_formulary = mysqli_query($connection, $query);
+                while ($row = mysqli_fetch_array($result_formulary)) {?>
+                    <tr>
+                        <td><?php echo $row['name']?></td>
+                        <td><?php echo $row['email']?></td>
+                        <td><?php echo $row['password']?></td>
+                        <td><?php echo $row['birthday']?></td>
+                        <td><?php echo $row['city']?></td>
+                        <td>
+                            <a href="edit.php?id=<?php echo $row['id']?>" class="btn btn-info btn-sm">
+                                Editar
+                            </a>
+                            <a href="delete.php?id=<?php echo $row['id']?>" class="btn btn-danger btn-sm">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                <?php }?>
+            </tbody>
+        </table>
+    </div>
+  <script src="./indez.js" ></script>
+    <!-- Agregamos los scripts de Bootstrap -->
   
-</body>
-</html>

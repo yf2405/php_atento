@@ -1,22 +1,30 @@
-
+/*
 function IntervalOfTime() {
   const queryJsButton = document.getElementById('query_js');
   if (queryJsButton) { // Asegurarse de que el elemento exista
     queryJsButton.addEventListener("submit", function(event){
-      event.preventDefault()
+      
       
     });
   }
 }
 
-setInterval(IntervalOfTime, 4000);
+ */
 
+setTimeout(function() {
+  var myAlert = document.getElementById('myalert');
+  if (myAlert != null) {
+    myAlert.style.display = "none";
+  }
+}, 3000); //  
+
+/*
 fetch('./db.php')
 .then(response => response.json())
 .then(data => console.log(data))
 .catch(error => console.error(error));
 
-/*
+
 function updateTable() {
   const table = document.getElementById("myTable");
   const rows = table.getElementsByTagName("tr");

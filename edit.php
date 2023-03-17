@@ -38,23 +38,33 @@ if (isset($_GET['id'])){
  /* se muestra un formulario HTML con los campos del usuario a editar. El atributo 'action' del
   formulario se establece en la página actual con el parámetro 'id' en la URL para que la página sepa qué usuario está editando. */
 ?>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <div class="container">
 <h1>Formulary of user</h1>
 	<form action="edit.php?id=<?php echo $_GET['id']; ?>" method="POST">
-		<label for="name">Name:</label>
-		<input type="text" name="name" required><br>
+  <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
 
-		<label for="email">Email:</label>
-		<input type="email" name="email" required><br>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
 
-		<label for="password">Password:</label>
-		<input type="password" name="password" required><br>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
 
-		<label for="birthDay">birth Day:</label>
-		<input type="date" name="birthDay" required><br>
+            <div class="form-group">
+                <label for="birthDay">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" name="birthDay" required>
+            </div>
 
-		<label for="city">City:</label>
-		<input type="text" name="city" required><br>
-
-		<button name="update"></button>
+            <div class="form-group">
+                <label for="city">Ciudad:</label>
+                <input type="text" class="form-control" name="city" required>
+            </div>
+    <input type="submit" name="update" value="Guardar" class="btn btn-primary">
 	</form>

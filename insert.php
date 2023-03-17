@@ -20,7 +20,7 @@ if(isset($_POST['save'])){
 } else {
     echo 'Los datos se guardaron correctamente';
 }
-$_SESSION['message'] = 'saved sus';
+$_SESSION['message'] = 'saved';
 
 // Cerrar la conexión a la base de datos
  header("location: index.php");
